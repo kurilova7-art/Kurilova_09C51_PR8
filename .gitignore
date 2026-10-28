@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+errors.txt
+ok.txt
+server.py
+.idea/
