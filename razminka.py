@@ -21,7 +21,7 @@ print()
 
 
 # H3
-r = requests.get(BASE + "/anketi/<99>")
+r = requests.get(BASE + "/anketi/99")
 print(f"Код ответа: {r.status_code}")
 print(f"Значение r.ok: {r.ok}")
 print(f"Текст ошибки: {r.text}")
