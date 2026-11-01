@@ -22,19 +22,17 @@ class Registry:
     def load(self, filename: str) -> bool:
         """Читает файл, возвращает False если файла нет"""
         try:
-            f = open(filename, encoding="utf-8")
+            with open(filename, encoding="utf-8") as f:
+                for n, line in enumerate(f, 1):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        self.add(self._parse_line(line))
+                    except AnketaError as e:
+                        self.rejected.append((n, line, str(e)))
         except FileNotFoundError:
             return False
-
-        with f:
-            for n, line in enumerate(f, 1):
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    self.add(self._parse_line(line))
-                except AnketaError as e:
-                    self.rejected.append((n, line, str(e)))
         return True
 
     @staticmethod
