@@ -1,6 +1,9 @@
 .venv/
 __pycache__/
+.idea/
+
 errors.txt
 ok.txt
+otchet.json
+
 server.py
-.idea/
